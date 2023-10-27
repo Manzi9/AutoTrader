@@ -28,9 +28,7 @@
     <input type="text" id="location" value="KT33DL"><br><br>
 
     <button onclick="generateURL()">Generate AutoTrader URL</button>
-
-    <p id="generatedURL"></p>
-
+    
     <script>
         function generateURL() {
             const make = document.getElementById('make').value;
@@ -43,10 +41,6 @@
 
             // Open the generated URL in a new tab
             window.open(autoTraderURL, '_blank');
-
-            // Display the generated URL as a hyperlink
-            const generatedURLElement = document.getElementById('generatedURL');
-            generatedURLElement.innerHTML = `<a href="${autoTraderURL}" target="_blank">${autoTraderURL}</a>`;
         }
 
         function generateUKAutoTraderURL(make, model, year, location) {
