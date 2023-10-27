@@ -1,71 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AutoTrader Search</title>
-  </head>
-  <body>
+</head>
+<body>
     <label for="make">Make:</label>
-    <input type="text" id="make" placeholder="Enter make" /><br /><br />
+    <input type="text" id="make" placeholder="Enter make"><br><br>
 
     <label for="model">Model:</label>
-    <input type="text" id="model" placeholder="Enter model" /><br /><br />
+    <input type="text" id="model" placeholder="Enter model"><br><br>
 
     <label for="year">Year:</label>
     <select id="year">
-      <option value="">Select Year</option>
-      <!-- Populate the dropdown with years from 2000 to 2023 -->
-      <script>
-        for (let i = 2000; i <= 2023; i++) {
-          document.write(`<option value="${i}">${i}</option>`);
-        }
-      </script>
+        <option value="">Select Year</option>
+        <!-- Populate the dropdown with years from 2000 to 2023 -->
+        <script>
+            for (let i = 2000; i <= 2023; i++) {
+                document.write(`<option value="${i}">${i}</option>`);
+            }
+        </script>
     </select>
-    <input
-      type="text"
-      id="customYear"
-      placeholder="Or enter a year"
-    /><br /><br />
+    <input type="text" id="customYear" placeholder="Or enter a year"><br><br>
 
     <label for="location">Location:</label>
-    <input type="text" id="location" value="KT33DL" /><br /><br />
+    <input type="text" id="location" value="KT33DL"><br><br>
 
     <button onclick="generateURL()">Generate AutoTrader URL</button>
 
+    <p id="generatedURL"></p>
+
     <script>
-      function generateURL() {
-        const make = document.getElementById("make").value;
-        const model = document.getElementById("model").value;
-        const year =
-          document.getElementById("year").value ||
-          document.getElementById("customYear").value;
-        const location = document.getElementById("location").value;
+        function generateURL() {
+            const make = document.getElementById('make').value;
+            const model = document.getElementById('model').value;
+            const year = document.getElementById('year').value || document.getElementById('customYear').value;
+            const location = document.getElementById('location').value;
 
-        const autoTraderURL = generateUKAutoTraderURL(
-          make,
-          model,
-          year,
-          location
-        );
-        console.log(autoTraderURL);
+            const autoTraderURL = generateUKAutoTraderURL(make, model, year, location);
+            console.log(autoTraderURL);
 
-        // Open the generated URL in a new tab
-        window.open(autoTraderURL, "_blank");
-      }
+            // Open the generated URL in a new tab
+            window.open(autoTraderURL, '_blank');
 
-      function generateUKAutoTraderURL(make, model, year, location) {
-        const baseURL = "https://www.autotrader.co.uk/car-search";
-        const queryParams = new URLSearchParams({
-          make,
-          model,
-          "year-from": year, // Set the 'year from' parameter
-          "year-to": year, // Set the 'year to' parameter
-          location,
-        });
-        const ukAutoTraderURL = `${baseURL}?${queryParams.toString()}`;
-        return ukAutoTraderURL;
-      }
+            // Display the generated URL as a hyperlink
+            const generatedURLElement = document.getElementById('generatedURL');
+            generatedURLElement.innerHTML = `<a href="${autoTraderURL}" target="_blank">${autoTraderURL}</a>`;
+        }
+
+        function generateUKAutoTraderURL(make, model, year, location) {
+            const baseURL = 'https://www.autotrader.co.uk/car-search';
+            const queryParams = new URLSearchParams({
+                make,
+                model,
+                'year-from': year, // Set the 'year from' parameter
+                'year-to': year,   // Set the 'year to' parameter
+                location,
+            });
+            const ukAutoTraderURL = `${baseURL}?${queryParams.toString()}`;
+            return ukAutoTraderURL;
+        }
     </script>
-  </body>
+</body>
 </html>
