@@ -29,3 +29,14 @@ function generateUKAutoTraderURL(make, model, year, location) {
   const ukAutoTraderURL = `${baseURL}?${queryParams.toString()}`;
   return ukAutoTraderURL;
 }
+
+function generateCarCheckURL() {
+  const reg = document.getElementById("reg").value;
+  const carCheckURL = `https://cartaxcheck.co.uk/free-car-check/?vrm=${reg}`;
+  return carCheckURL;
+}
+
+function checkCarModel() {
+  const carCheckURL = generateCarCheckURL();
+  window.open(carCheckURL, "_blank");
+}
