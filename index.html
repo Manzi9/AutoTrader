@@ -7,6 +7,17 @@
     <title>AutoTrader Search</title>
   </head>
   <body>
+    <label for="Registration">Reg:</label>
+    <input type="text" id="reg" placeholder="No spaces!" /><br /><br />
+
+    <button onclick="checkCarModel()">Check Car Model</button>
+
+    <!-- Horizontal line -->
+
+    <br /><br /><br />
+    <hr />
+    <br /><br /><br />
+
     <label for="make">Make:</label>
     <input type="text" id="make" placeholder="Enter make" /><br /><br />
 
@@ -25,6 +36,9 @@
     <input type="text" id="location" value="KT33DL" /><br /><br />
 
     <button onclick="generateURL()">Generate AutoTrader URL</button>
+
+    <div id="generatedURL"></div>
+
     <script src="script.js"></script>
   </body>
 </html>
