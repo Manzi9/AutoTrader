@@ -1,3 +1,5 @@
+// import { API_URL } from "../config";
+
 async function checkCarModel() {
   const reg = document.getElementById("reg").value;
   const apiUrl = `https://dvlasearch.appspot.com/DvlaSearch?apikey=DvlaSearchDemoAccount&licencePlate=${reg}`;
@@ -16,6 +18,7 @@ async function checkCarModel() {
     const model = data.model || "Unknown";
     const color = data.colour || "Unknown";
     const year = data.yearOfManufacture || "Unknown";
+    const capacity = data.cylinderCapacity || "Unknown";
 
     // Update the carDetails div
     const carDetailsDiv = document.getElementById("carDetails");
@@ -25,6 +28,7 @@ async function checkCarModel() {
       <p><strong>Model:</strong> ${model}</p>
       <p><strong>Color:</strong> ${color}</p>
       <p><strong>Year:</strong> ${year}</p>
+      <p><strong>Capacity:</strong> ${capacity}</p>
     `;
   } catch (error) {
     console.error(error);
