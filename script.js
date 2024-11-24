@@ -1,42 +1,34 @@
-"use strict";
-
-function generateURL() {
-  const make = document.getElementById("make").value;
-  const model = document.getElementById("model").value;
-  const year = document.getElementById("customYear").value;
-  const location = document.getElementById("location").value;
-
-  const autoTraderURL = generateUKAutoTraderURL(make, model, year, location);
-  console.log(autoTraderURL);
-
-  // Open the generated URL in a new tab
-  window.open(autoTraderURL, "_blank");
-
-  // Display the generated URL as a hyperlink
-  const generatedURLElement = document.getElementById("generatedURL");
-  generatedURLElement.innerHTML = `<a href="${autoTraderURL}" target="_blank">${autoTraderURL}</a>`;
-}
-
-function generateUKAutoTraderURL(make, model, year, location) {
-  const baseURL = "https://www.autotrader.co.uk/car-search";
-  const queryParams = new URLSearchParams({
-    make,
-    model,
-    "year-from": year, // Set the 'year from' parameter
-    "year-to": year, // Set the 'year to' parameter
-    location,
-  });
-  const ukAutoTraderURL = `${baseURL}?${queryParams.toString()}`;
-  return ukAutoTraderURL;
-}
-
-function generateCarCheckURL() {
+async function checkCarModel() {
   const reg = document.getElementById("reg").value;
-  const carCheckURL = `https://cartaxcheck.co.uk/free-car-check/?vrm=${reg}`;
-  return carCheckURL;
-}
+  const apiUrl = `https://dvlasearch.appspot.com/DvlaSearch?apikey=DvlaSearchDemoAccount&licencePlate=${reg}`;
 
-function checkCarModel() {
-  const carCheckURL = generateCarCheckURL();
-  window.open(carCheckURL, "_blank");
+  try {
+    const response = await fetch(apiUrl);
+    if (!response.ok) {
+      throw new Error(`Error: ${response.statusText}`);
+    }
+
+    const data = await response.json();
+    console.log(data);
+
+    // Extract car details
+    const make = data.make || "Unknown";
+    const model = data.model || "Unknown";
+    const color = data.colour || "Unknown";
+    const year = data.yearOfManufacture || "Unknown";
+
+    // Update the carDetails div
+    const carDetailsDiv = document.getElementById("carDetails");
+    carDetailsDiv.innerHTML = `
+      <h3>Car Details:</h3>
+      <p><strong>Make:</strong> ${make}</p>
+      <p><strong>Model:</strong> ${model}</p>
+      <p><strong>Color:</strong> ${color}</p>
+      <p><strong>Year:</strong> ${year}</p>
+    `;
+  } catch (error) {
+    console.error(error);
+    const carDetailsDiv = document.getElementById("carDetails");
+    carDetailsDiv.innerHTML = `<p style="color:red;">Failed to fetch car model. Please try again.</p>`;
+  }
 }
