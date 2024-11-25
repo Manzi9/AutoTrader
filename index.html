@@ -3,44 +3,30 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Car Information Finder</title>
     <link rel="stylesheet" href="style.css" />
-    <title>AutoTrader Search</title>
   </head>
   <body>
-    <label for="Registration">Reg:</label>
-    <input type="text" id="reg" placeholder="No spaces!" /><br /><br />
+    <div class="container">
+      <h1>Car Information Finder</h1>
+      <label for="reg">Enter Registration Number:</label>
+      <input type="text" id="reg" placeholder="e.g., AB12CDE" /><br />
+      <button id="fetchCarInfo">Fetch Car Info</button>
 
-    <button onclick="checkCarModel()">Check Car Model</button>
-    <div id="carDetails"></div>
-    <!-- New div for displaying car details -->
+      <div id="loading" class="hidden">Loading...</div>
 
-    <!-- Horizontal line -->
-
-    <br /><br /><br />
-    <hr />
-    <br /><br /><br />
-
-    <label for="make">Make:</label>
-    <input type="text" id="make" placeholder="Enter make" /><br /><br />
-
-    <label for="model">Model:</label>
-    <input type="text" id="model" placeholder="Enter model" /><br /><br />
-
-    <label for="year">Year:</label>
-
-    <input
-      type="text"
-      id="customYear"
-      placeholder="Or enter a year"
-    /><br /><br />
-
-    <label for="location">Location:</label>
-    <input type="text" id="location" value="KT33DL" /><br /><br />
-
-    <button onclick="generateURL()">Generate AutoTrader URL</button>
-
-    <div id="generatedURL"></div>
-
+      <div id="carInfo" class="hidden">
+        <h2>Car Information</h2>
+        <label for="make">Make:</label>
+        <input type="text" id="make" value="" placeholder="Make" /><br />
+        <label for="model">Model:</label>
+        <input type="text" id="model" value="" placeholder="Model" /><br />
+        <label for="year">Year:</label>
+        <input type="text" id="year" value="" placeholder="Year" /><br />
+        <button id="generateLink">Generate AutoTrader Link</button>
+        <div id="generatedLink" class="hidden"></div>
+      </div>
+    </div>
     <script src="script.js"></script>
   </body>
 </html>
