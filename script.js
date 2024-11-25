@@ -73,5 +73,5 @@ document.getElementById("generateLink").addEventListener("click", () => {
   )}&sort=relevance&year-from=${year}&year-to=${year}`;
 
   // Redirect to the AutoTrader URL
-  window.location.href = autoTraderURL;
+  window.open(autoTraderURL, "_blank");
 });
