@@ -2,12 +2,19 @@ document.getElementById("fetchCarInfo").addEventListener("click", async () => {
   const reg = document.getElementById("reg").value.trim();
   const loading = document.getElementById("loading");
   const carInfo = document.getElementById("carInfo");
+  const errorMessage = document.getElementById("errorMessage");
+
+  // Clear any previous error
+  errorMessage.textContent = "";
+  errorMessage.classList.add("hidden");
 
   if (!reg) {
-    alert("Please enter a registration number.");
+    errorMessage.textContent = "Please enter a registration number.";
+    errorMessage.classList.remove("hidden");
     return;
   }
 
+  // Show loading indicator and hide car info section
   loading.classList.remove("hidden");
   carInfo.classList.add("hidden");
 
@@ -19,17 +26,26 @@ document.getElementById("fetchCarInfo").addEventListener("click", async () => {
 
     const data = await response.json();
 
+    // Check for error in the JSON response
+    if (!data.make || !data.model || !data.yearOfManufacture) {
+      throw new Error(
+        "The registration number could not be found. Please check and try again."
+      );
+    }
+
+    // Populate fields with fetched data
     document.getElementById("make").value = data.make || "";
     document.getElementById("model").value = data.model || "";
     document.getElementById("year").value = data.yearOfManufacture || "";
 
     carInfo.classList.remove("hidden");
   } catch (error) {
-    alert(
-      "Could not retrieve car information. Please check the registration or try again later."
-    );
+    // Display error below the registration input
+    errorMessage.textContent = error.message;
+    errorMessage.classList.remove("hidden");
     console.error(error);
   } finally {
+    // Hide loading indicator
     loading.classList.add("hidden");
   }
 });
@@ -38,19 +54,24 @@ document.getElementById("generateLink").addEventListener("click", () => {
   const make = document.getElementById("make").value.trim();
   const model = document.getElementById("model").value.trim();
   const year = document.getElementById("year").value.trim();
+  const postcode = document.getElementById("postcode").value.trim();
 
-  if (!make || !model || !year) {
-    alert("Make, Model, and Year are required to generate the link.");
+  if (!make || !model || !year || !postcode) {
+    alert(
+      "Make, Model, Year, and Postcode are required to navigate to the link."
+    );
     return;
   }
 
+  // Construct the AutoTrader URL
   const autoTraderURL = `https://www.autotrader.co.uk/car-search?advertising-location=at_cars&make=${encodeURIComponent(
     make
   )}&model=${encodeURIComponent(
     model
-  )}&moreOptions=visible&postcode=kt33dl&sort=relevance&year-from=${year}&year-to=${year}`;
+  )}&moreOptions=visible&postcode=${encodeURIComponent(
+    postcode
+  )}&sort=relevance&year-from=${year}&year-to=${year}`;
 
-  const linkDiv = document.getElementById("generatedLink");
-  linkDiv.innerHTML = `<h3>AutoTrader Link:</h3><a href="${autoTraderURL}" target="_blank">${autoTraderURL}</a>`;
-  linkDiv.classList.remove("hidden");
+  // Redirect to the AutoTrader URL
+  window.location.href = autoTraderURL;
 });

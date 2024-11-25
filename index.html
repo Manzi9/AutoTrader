@@ -9,14 +9,22 @@
   <body>
     <div class="container">
       <h1>Car Information Finder</h1>
-      <label for="reg">Enter Registration Number:</label>
-      <input type="text" id="reg" placeholder="e.g., AB12CDE" /><br />
+      <label for="reg">Enter Registration Number :</label>
+      <input type="text" id="reg" placeholder="e.g., AB12CDE" />
+      <p
+        id="errorMessage"
+        class="hidden"
+        style="color: red; font-size: 0.9em; margin-top: 5px"
+      ></p>
+      <br />
       <button id="fetchCarInfo">Fetch Car Info</button>
 
       <div id="loading" class="hidden">Loading...</div>
 
       <div id="carInfo" class="hidden">
         <h2>Car Information</h2>
+        <label for="postcode">Search Postcode:</label>
+        <input type="text" id="postcode" value="KT33DL" /><br /><br />
         <label for="make">Make:</label>
         <input type="text" id="make" value="" placeholder="Make" /><br />
         <label for="model">Model:</label>
