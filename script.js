@@ -18,16 +18,16 @@ document.getElementById("fetchCarInfo").addEventListener("click", async () => {
   loading.classList.remove("hidden");
   carInfo.classList.add("hidden");
 
-  // try {
-  //   const response = await fetch(
-  //     `https://dvlasearch.appspot.com/DvlaSearch?apikey=DvlaSearchDemoAccount&licencePlate=${reg}`
-  //   );
-  //   if (!response.ok) throw new Error("Failed to fetch car information.");
   try {
     const response = await fetch(
-      `https://dvlasearch.appspot.com/DvlaSearch?apikey=HLZmj5e5XtCfeRzu&licencePlate=${reg}`
+      `https://dvlasearch.appspot.com/DvlaSearch?apikey=DvlaSearchDemoAccount&licencePlate=${reg}`
     );
     if (!response.ok) throw new Error("Failed to fetch car information.");
+    // try {
+    //   const response = await fetch(
+    //     `https://dvlasearch.appspot.com/DvlaSearch?apikey=HLZmj5e5XtCfeRzu&licencePlate=${reg}`
+    //   );
+    //   if (!response.ok) throw new Error("Failed to fetch car information.");
 
     const data = await response.json();
 
