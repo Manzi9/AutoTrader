@@ -67,6 +67,30 @@ document.getElementById("fetchCarInfo").addEventListener("click", async () => {
   }
 });
 
+// Live regex validation while typing
+document.getElementById("reg").addEventListener("input", () => {
+  const reg = document.getElementById("reg").value.trim();
+  const errorMessage = document.getElementById("errorMessage");
+
+  // Regex for validating registration number
+  const regPattern =
+    /(^[A-Za-z]{2}[0-9]{2}\s?[A-Za-z]{3}$)|(^[A-Za-z][0-9]{1,3}[A-Za-z]{3}$)|(^[A-Za-z]{3}[0-9]{1,3}[A-Za-z]$)|(^[0-9]{1,4}[A-Za-z]{1,2}$)|(^[0-9]{1,3}[A-Za-z]{1,3}$)|(^[A-Za-z]{1,2}[0-9]{1,4}$)|(^[A-Za-z]{1,3}[0-9]{1,3}$)|(^[A-Za-z]{1,3}[0-9]{1,4}$)|(^[0-9]{3}[DXdx]{1}[0-9]{3}$)/;
+
+  if (!reg) {
+    errorMessage.textContent = "";
+    errorMessage.classList.add("hidden");
+    return;
+  }
+
+  if (!regPattern.test(reg)) {
+    errorMessage.textContent = "Invalid registration number format.";
+    errorMessage.classList.remove("hidden");
+  } else {
+    errorMessage.textContent = "";
+    errorMessage.classList.add("hidden");
+  }
+});
+
 document.getElementById("generateLink").addEventListener("click", () => {
   const make = document.getElementById("make").value.trim();
   const model = document.getElementById("model").value.trim();
