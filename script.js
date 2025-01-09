@@ -8,8 +8,18 @@ document.getElementById("fetchCarInfo").addEventListener("click", async () => {
   errorMessage.textContent = "";
   errorMessage.classList.add("hidden");
 
+  // Regex for validating registration number
+  const regPattern =
+    /(^[A-Za-z]{2}[0-9]{2}\s?[A-Za-z]{3}$)|(^[A-Za-z][0-9]{1,3}[A-Za-z]{3}$)|(^[A-Za-z]{3}[0-9]{1,3}[A-Za-z]$)|(^[0-9]{1,4}[A-Za-z]{1,2}$)|(^[0-9]{1,3}[A-Za-z]{1,3}$)|(^[A-Za-z]{1,2}[0-9]{1,4}$)|(^[A-Za-z]{1,3}[0-9]{1,3}$)|(^[A-Za-z]{1,3}[0-9]{1,4}$)|(^[0-9]{3}[DXdx]{1}[0-9]{3}$)/;
+
   if (!reg) {
     errorMessage.textContent = "Please enter a registration number.";
+    errorMessage.classList.remove("hidden");
+    return;
+  }
+
+  if (!regPattern.test(reg)) {
+    errorMessage.textContent = "Invalid registration number format.";
     errorMessage.classList.remove("hidden");
     return;
   }
@@ -19,15 +29,17 @@ document.getElementById("fetchCarInfo").addEventListener("click", async () => {
   carInfo.classList.add("hidden");
 
   try {
+    // API call using the demo key
     const response = await fetch(
       `https://dvlasearch.appspot.com/DvlaSearch?apikey=DvlaSearchDemoAccount&licencePlate=${reg}`
     );
+
+    // Uncomment and use this key for a real API call
+    // const response = await fetch(
+    //   `https://dvlasearch.appspot.com/DvlaSearch?apikey=HLZmj5e5XtCfeRzu&licencePlate=${reg}`
+    // );
+
     if (!response.ok) throw new Error("Failed to fetch car information.");
-    // try {
-    //   const response = await fetch(
-    //     `https://dvlasearch.appspot.com/DvlaSearch?apikey=HLZmj5e5XtCfeRzu&licencePlate=${reg}`
-    //   );
-    //   if (!response.ok) throw new Error("Failed to fetch car information.");
 
     const data = await response.json();
 
