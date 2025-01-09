@@ -112,3 +112,27 @@ document.getElementById("generateLink").addEventListener("click", () => {
   // Redirect to the AutoTrader URL
   window.open(autoTraderURL, "_blank");
 });
+
+document.getElementById("generateEbayLink").addEventListener("click", () => {
+  const make = document.getElementById("make").value.trim();
+  const model = document.getElementById("model").value.trim();
+  const year = document.getElementById("year").value.trim();
+  const postcode = document.getElementById("postcode").value.trim();
+
+  if (!make || !model || !year || !postcode) {
+    alert(
+      "Make, Model, Year, and Postcode are required to navigate to the link."
+    );
+    return;
+  }
+
+  // Construct the eBay Motors URL with year included
+  const ebayURL = `https://www.ebay.co.uk/sch/i.html?_nkw=${encodeURIComponent(
+    make
+  )}+${encodeURIComponent(model)}+${encodeURIComponent(
+    year
+  )}&_ipg=240&_sop=12&LH_ItemCondition=3000`;
+
+  // Redirect to the eBay Motors URL
+  window.open(ebayURL, "_blank");
+});
