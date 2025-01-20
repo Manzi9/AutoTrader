@@ -2,7 +2,7 @@ body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
-  background-color: #f4f4f9;
+  background-color: #d3d3d3;
 }
 
 .container {
@@ -11,13 +11,13 @@ body {
   padding: 20px;
   background: #fff;
   border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 4px #929292;
 }
 
 h1,
 h2 {
   text-align: center;
-  color: #333;
+  color: #000000;
 }
 
 label {
@@ -27,7 +27,7 @@ label {
 }
 
 input {
-  width: 100%;
+  width: 95%;
   padding: 10px;
   margin: 5px 0;
   border: 1px solid #ccc;
