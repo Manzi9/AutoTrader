@@ -11,22 +11,6 @@ document.getElementById("fetchCarInfo").addEventListener("click", async () => {
   errorMessage.textContent = "";
   errorMessage.classList.add("hidden");
 
-  // Regex for validating registration number
-  const regPattern =
-    /(^[A-Za-z]{2}[0-9]{2}\s?[A-Za-z]{3}$)|(^[A-Za-z][0-9]{1,3}[A-Za-z]{3}$)|(^[A-Za-z]{3}[0-9]{1,3}[A-Za-z]$)|(^[0-9]{1,4}[A-Za-z]{1,2}$)|(^[0-9]{1,3}[A-Za-z]{1,3}$)|(^[A-Za-z]{1,2}[0-9]{1,4}$)|(^[A-Za-z]{1,3}[0-9]{1,3}$)|(^[A-Za-z]{1,3}[0-9]{1,4}$)|(^[0-9]{3}[DXdx]{1}[0-9]{3}$)/;
-
-  if (!reg) {
-    errorMessage.textContent = "Please enter a registration number.";
-    errorMessage.classList.remove("hidden");
-    return;
-  }
-
-  if (!regPattern.test(reg)) {
-    errorMessage.textContent = "Invalid registration number format.";
-    errorMessage.classList.remove("hidden");
-    return;
-  }
-
   // Show loading indicator and hide car info section
   loading.classList.remove("hidden");
   carInfo.classList.add("hidden");
