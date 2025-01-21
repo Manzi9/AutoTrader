@@ -2,7 +2,13 @@ body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
-  background-color: #d3d3d3;
+  background-image: url(./assets/Homepage-Model-X-Desktop.png);
+}
+
+@media (max-width: 800px) {
+  body {
+    background-image: url(./assets/Homepage-Model-X-Mobile-LHD_001.png);
+  }
 }
 
 .container {
