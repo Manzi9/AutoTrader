@@ -29,17 +29,24 @@ The application uses the [DVLA Search API](https://dvlasearch.appspot.com/) to f
 
 ## Example Usage
 
-### Input:
+### Number Plate Input
+
+- **Registration:** VA10 GCK
+
+### Number Plate Output:
 
 - **Make:** VW
 - **Model:** POLO
 - **Year:** 2010
-- **Postcode:** KT33DL
+
+### Search Area:
+
+- **Postcode:** SW1 1AA
 
 ### AutoTrader URL:
 
 ```
-https://www.autotrader.co.uk/car-search?advertising-location=at_cars&make=VW&model=POLO&moreOptions=visible&postcode=KT33DL&sort=relevance&year-from=2010&year-to=2010
+https://www.autotrader.co.uk/car-search?advertising-location=at_cars&make=VW&model=POLO&moreOptions=visible&postcode=SW11AA&sort=relevance&year-from=2010&year-to=2010
 ```
 
 ### eBay Motors URL:
