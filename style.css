@@ -3,12 +3,20 @@ body {
   margin: 0;
   padding: 0;
   background-image: url(./assets/Homepage-Model-X-Desktop.png);
+  background-position-y: -353px;
+  background-position-x: -78px;
 }
 
-@media (max-width: 800px) {
+@media (max-width: 768px) {
   body {
     background-image: url(./assets/Homepage-Model-X-Mobile-LHD_001.png);
+    background-position-y: -213px;
+    background-position-x: -32px;
   }
+}
+
+img {
+  top: -20px;
 }
 
 .container {
