@@ -1,3 +1,8 @@
+@font-face {
+  font-family: Charles Wright-Bold;
+  src: url(./charles-wright/CharlesWright-Bold.otf);
+}
+
 html {
   font-size: 62.5%;
 }
@@ -49,6 +54,20 @@ input {
   border-radius: 4px;
 }
 
+#reg {
+  width: 130px;
+  background-color: #ffbf00; /* Yellow background */
+  border: 2px solid #000; /* Black border */
+  border-radius: 6px;
+  font-weight: bold;
+  font-size: 2rem; /* Size for characters */
+  letter-spacing: 4px; /* Spacing for plate format */
+  text-transform: uppercase;
+  color: #000; /* Black text */
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+  text-align: center;
+}
+
 button {
   width: 100%;
   padding: 10px;
@@ -58,6 +77,7 @@ button {
   border: none;
   border-radius: 4px;
   cursor: pointer;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
 }
 
 button:hover {
