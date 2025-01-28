@@ -55,16 +55,19 @@ input {
 }
 
 #reg {
-  width: 130px;
-  background-color: #ffbf00; /* Yellow background */
-  border: 2px solid #000; /* Black border */
-  border-radius: 6px;
-  font-weight: bold;
-  font-size: 2rem; /* Size for characters */
-  letter-spacing: 4px; /* Spacing for plate format */
+  font-family: "UKNumberPlate", Arial, sans-serif !important;
+  width: 30%;
+  border: 1px solid #ffe20a;
+  padding: 1px;
+  background: #ffe20a;
+  word-spacing: -3px;
+  letter-spacing: 0;
   text-transform: uppercase;
-  color: #000; /* Black text */
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+  font-size: 3rem;
+  color: #000 !important;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
   text-align: center;
 }
 
