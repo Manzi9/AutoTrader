@@ -7,9 +7,9 @@ body {
   font-size: 1.6rem;
   margin: 0;
   padding: 0;
-  background-image: url(./assets/Homepage-Model-X-Desktop.png);
-  background-position-y: -353px;
-  background-position-x: -78px;
+  background-image: url(assets/Homepage-DESK\ TOP-TEST.jpeg);
+  background-position-x: center;
+  background-position-y: -300px;
 }
 
 @media (max-width: 768px) {
@@ -18,10 +18,6 @@ body {
     background-position-y: -213px;
     background-position-x: -32px;
   }
-}
-
-img {
-  top: -20px;
 }
 
 .container {
