@@ -57,9 +57,9 @@ input {
 #reg {
   font-family: "UKNumberPlate", Arial, sans-serif !important;
   width: 30%;
-  border: 1px solid #ffe20a;
   padding: 1px;
   background: #ffe20a;
+  border: 3px solid #000000;
   word-spacing: -3px;
   letter-spacing: 0;
   text-transform: uppercase;
@@ -69,6 +69,8 @@ input {
   display: flex;
   align-items: center;
   text-align: center;
+  border: solid;
+  border-width: ;
 }
 
 button {
