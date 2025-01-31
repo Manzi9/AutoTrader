@@ -2,7 +2,7 @@
 
 The **Car Information Finder** is a simple web application that enables users to search for detailed car information using a registration number. Additionally, it provides quick links to browse car listings on AutoTrader and eBay Motors, making it a handy tool for anyone looking to explore vehicles for purchase.
 
-## Features
+## Features 
 
 - **Registration Validation:** Ensures the entered vehicle registration follows valid UK formats using regex.
 - **Car Information Retrieval:** Fetches car details such as make, model, and year from an external API.
