@@ -120,5 +120,3 @@ document.getElementById("generateEbayLink").addEventListener("click", () => {
   // Redirect to the eBay Motors URL
   window.open(ebayURL, "_blank");
 });
-
-//Last

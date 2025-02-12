@@ -15,6 +15,7 @@ body {
   background-image: url(assets/Homepage-DESK\ TOP-TEST.jpeg);
   background-position-x: center;
   background-position-y: -300px;
+  padding: 20px;
 }
 
 @media (max-width: 768px) {
