@@ -30,10 +30,20 @@ document.getElementById("fetchCarInfo").addEventListener("click", async () => {
       );
     }
 
+    // Function to capitalize first letter only
+    const capitalizeFirstLetter = (string) => {
+      if (!string) return "";
+      return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
+    };
+
     // Populate fields with fetched data
     document.getElementById("make").value = data.make || "";
     document.getElementById("model").value = data.model || "";
     document.getElementById("year").value = data.yearOfManufacture || "";
+    document.getElementById("transmission").value =
+      capitalizeFirstLetter(data.transmission) || "";
+    document.getElementById("colour").value =
+      capitalizeFirstLetter(data.colour) || "";
 
     carInfo.classList.remove("hidden");
   } catch (error) {
@@ -76,6 +86,8 @@ document.getElementById("generateLink").addEventListener("click", () => {
   const model = document.getElementById("model").value.trim();
   const year = document.getElementById("year").value.trim();
   const postcode = document.getElementById("postcode").value.trim();
+  const transmission = document.getElementById("transmission").value.trim();
+  const colour = document.getElementById("colour").value.trim();
 
   if (!make || !model || !year || !postcode) {
     alert(
@@ -85,13 +97,23 @@ document.getElementById("generateLink").addEventListener("click", () => {
   }
 
   // Construct the AutoTrader URL
-  const autoTraderURL = `https://www.autotrader.co.uk/car-search?advertising-location=at_cars&make=${encodeURIComponent(
+  let autoTraderURL = `https://www.autotrader.co.uk/car-search?advertising-location=at_cars&make=${encodeURIComponent(
     make
   )}&model=${encodeURIComponent(
     model
   )}&moreOptions=visible&postcode=${encodeURIComponent(
     postcode
   )}&sort=relevance&year-from=${year}&year-to=${year}`;
+
+  // Add transmission parameter if available
+  if (transmission) {
+    autoTraderURL += `&transmission=${encodeURIComponent(transmission)}`;
+  }
+
+  // Add colour parameter if available
+  if (colour) {
+    autoTraderURL += `&colour=${encodeURIComponent(colour)}`;
+  }
 
   // Redirect to the AutoTrader URL
   window.open(autoTraderURL, "_blank");
@@ -102,6 +124,8 @@ document.getElementById("generateEbayLink").addEventListener("click", () => {
   const model = document.getElementById("model").value.trim();
   const year = document.getElementById("year").value.trim();
   const postcode = document.getElementById("postcode").value.trim();
+  const transmission = document.getElementById("transmission").value.trim();
+  const colour = document.getElementById("colour").value.trim();
 
   if (!make || !model || !year || !postcode) {
     alert(
@@ -110,11 +134,17 @@ document.getElementById("generateEbayLink").addEventListener("click", () => {
     return;
   }
 
-  // Construct the eBay Motors URL with year included
+  // Construct the eBay Motors URL with year, transmission, and colour included
+  let searchTerms = `${make} ${model} ${year}`;
+  if (transmission) {
+    searchTerms += ` ${transmission}`;
+  }
+  if (colour) {
+    searchTerms += ` ${colour}`;
+  }
+
   const ebayURL = `https://www.ebay.co.uk/sch/i.html?_nkw=${encodeURIComponent(
-    make
-  )}+${encodeURIComponent(model)}+${encodeURIComponent(
-    year
+    searchTerms
   )}&_ipg=240&_sop=12&LH_ItemCondition=3000`;
 
   // Redirect to the eBay Motors URL
