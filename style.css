@@ -31,9 +31,29 @@ body {
   max-width: 600px;
   margin: 30px auto;
   padding: 20px;
-  background: #fff;
+  background: #ffffffc9;
   border-radius: 8px;
   box-shadow: 0 2px 4px #787878;
+  position: relative;
+}
+
+.toggle-button {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: #ffffff3a;
+  transition: background-color 0.3s ease;
+}
+
+.toggle-button:hover {
+  background-color: #ffffff71;
+}
+
+.toggle-button.active {
+  background-color: #ffffff2a;
 }
 
 h1,

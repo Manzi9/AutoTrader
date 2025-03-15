@@ -1,6 +1,15 @@
 // Import the API key from config.js
 import { apiKey } from "./config.js";
 
+// Toggle button functionality
+document.getElementById("toggleButton").addEventListener("click", () => {
+  const carInfo = document.getElementById("carInfo");
+  const toggleButton = document.getElementById("toggleButton");
+
+  carInfo.classList.toggle("hidden");
+  toggleButton.classList.toggle("active");
+});
+
 document.getElementById("fetchCarInfo").addEventListener("click", async () => {
   const reg = document.getElementById("reg").value.trim();
   const loading = document.getElementById("loading");
